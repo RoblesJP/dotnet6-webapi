@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Infrastructure.DbMapping.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DbMapping
@@ -24,29 +25,8 @@ namespace Infrastructure.DbMapping
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>(
-                category =>
-                {
-                    category.HasKey(category => category.Id);
-
-                    category.Property(category => category.Id).HasColumnName("id");
-                    category.Property(category => category.Name).HasColumnName("name");
-                });
-
-            modelBuilder.Entity<Item>(
-                item =>
-                {
-                    item.HasKey(item => item.Id);
-
-                    item.Property(item => item.Id).HasColumnName("id");
-                    item.Property(item => item.Name).HasColumnName("name");
-                    item.Property(item => item.Price100gr).HasColumnName("price_100gr");
-                    item.Property(item => item.PriceKg).HasColumnName("price_kg");
-                    item.Property(item => item.CategoryId).HasColumnName("id_category");
-
-                    item.HasOne(item => item.Category)
-                        .WithMany();
-                });
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         }
 
         #endregion OnModelCreating
