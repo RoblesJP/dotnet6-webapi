@@ -32,7 +32,6 @@ namespace API.Controllers
 
         [Route("")]
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAllAsync()
         {
             try

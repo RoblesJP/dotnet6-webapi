@@ -21,14 +21,10 @@ namespace Infrastructure.DbMapping
 
         #endregion Constructor
 
-        #region OnModelCreating
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         }
-
-        #endregion OnModelCreating
     }
 }
