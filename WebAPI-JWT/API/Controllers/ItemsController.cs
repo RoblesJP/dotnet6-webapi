@@ -20,15 +20,11 @@ namespace API.Controllers
 
         #endregion Repositories
 
-        #region Constructor
-
         public ItemsController(ILogger<ItemsController> logger, IItemRepository itemRepository)
         {
             _logger = logger;
             _itemRepository = itemRepository;
         }
-
-        #endregion Constructor
 
         [Route("")]
         [HttpGet]
