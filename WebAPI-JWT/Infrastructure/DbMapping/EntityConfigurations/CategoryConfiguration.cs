@@ -13,6 +13,7 @@ namespace Infrastructure.DbMapping.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
+            builder.ToTable("categories");
             builder.HasKey(category => category.Id);
 
             builder.Property(category => category.Id).HasColumnName("id");
